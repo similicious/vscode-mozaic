@@ -2,26 +2,71 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "Mozaic",
   "patterns": [
-    {
-      "include": "#keywords"
-    },
-    {
-      "include": "#strings"
-    }
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#event-handlers-builtin" },
+    { "include": "#event-handlers-user" },
+    { "include": "#keywords-control" },
+    { "include": "#keywords-logical" },
+    { "include": "#builtin-functions" },
+    { "include": "#builtin-variables" },
+    { "include": "#constants-boolean" },
+    { "include": "#constants-numeric" },
+    { "include": "#operators" }
   ],
   "repository": {
-    "keywords": {
+    "comments": {
+      "name": "comment.line.double-slash.mozaic",
+      "match": "//.*$"
+    },
+    "strings": {
+      "name": "string.quoted.other.mozaic",
+      "begin": "\\{",
+      "end": "\\}"
+    },
+    "event-handlers-builtin": {
+      "name": "entity.name.function.event.mozaic",
+      "match": "@(OnAUParameter|OnHostStart|OnHostStop|OnKnobChange|OnLoad|OnMetroPulse|OnMidiCC|OnMidiInput|OnMidiNote|OnMidiNoteOff|OnMidiNoteOn|OnNewBar|OnNewBeat|OnPadDown|OnPadUp|OnPedalDown|OnPedalUp|OnShiftDown|OnShiftUp|OnSysex|OnTimer|OnXYChange|Description|End)\\b"
+    },
+    "event-handlers-user": {
+      "name": "entity.name.function.mozaic",
+      "match": "@\\w+"
+    },
+    "keywords-control": {
+      "name": "keyword.control.mozaic",
+      "match": "\\b(if|elseif|else|endif|for|to|endfor|while|endwhile|repeat|until|Call|Exit)\\b"
+    },
+    "keywords-logical": {
+      "name": "keyword.operator.logical.mozaic",
+      "match": "\\b(AND|and|OR|or|NOT|not)\\b"
+    },
+    "builtin-functions": {
+      "name": "support.function.mozaic",
+      "match": "\\b(Abs|Clip|ColorPad|ConfigureMPE|CopyArray|Cos|CustomScale|Dec|Div|Exp|FillArray|FlashPad|FlashUserLed|GetAUParameter|GetKnobValue|GetLFOValue|GetNoteState|GetXValue|GetXYMorphValue|GetYValue|Inc|InScale|LabelKnob|LabelKnobs|LabelPad|LabelPads|LabelXY|LatchPad|Log10|Log|Logn|LogTime|NoteName|PadState|Pow|PresetScale|QuarterNote|Random|ReceiveSysex|ResetLFO|ResetNoteStates|ResetTimer|RootNoteName|RoundDown|RoundUp|Round|ScaleName|ScaleQuantize|SendMIDIBankSelect|SendMIDICC|SendMIDINoteOff|SendMIDINoteOn|SendMIDIOut|SendMIDIPitchbend|SendMIDIProgramChange|SendMIDIThruOnCh|SendMIDIThru|SendSysexThru|SendSysex|SetAUParameter|SetKnobValue|SetLFOType|SetMetroPPQN|SetMetroSwing|SetNoteState|SetRootNote|SetShortName|SetTimerInterval|SetXYValues|SetupLFO|ShowLayout|Sin|Sqrt|StartTimer|StopTimer|SysexSize|SystemTime|Tan|Tanh|TranslateCurve|TranslateScale|Unassigned)\\b"
+    },
+    "builtin-variables": {
+      "name": "variable.language.mozaic",
+      "match": "\\b(CurrentMetroPulse|HostBar|HostBeat|HostBeatsPerMeasure|HostRunning|HostTempo|LastAUParameter|LastKnob|LastPad|LastPadVelocity|MIDIByte1|MIDIByte2|MIDIByte3|MIDIChannel|MIDICommand|MIDINote|MIDISustainPedalDown|MIDIVelocity|MotionPitch|MotionRoll|MotionYaw|ShiftPressed)\\b"
+    },
+    "constants-boolean": {
+      "name": "constant.language.mozaic",
+      "match": "\\b(YES|NO|true|false)\\b"
+    },
+    "constants-numeric": {
       "patterns": [
         {
-          "name": "keyword.control.mozaic",
-          "match": "\\b(if|endif|while|for|endif)\\b"
+          "name": "constant.numeric.hex.mozaic",
+          "match": "\\b0x[0-9A-Fa-f]+\\b"
+        },
+        {
+          "name": "constant.numeric.mozaic",
+          "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
         }
       ]
     },
-    "strings": {
-      "name": "string.mozaic",
-      "begin": "{",
-      "end": "}"
+    "operators": {
+      "name": "keyword.operator.mozaic",
+      "match": "<>|<=|>=|[+\\-*/%<>=]"
     }
   },
   "scopeName": "source.mozaic"
