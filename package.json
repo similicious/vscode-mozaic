@@ -1,4 +1,7 @@
 {
+  "repository": {
+    "url": "https://github.com/similicious/vscode-mozaic"
+  },
   "name": "vscode-mozaic",
   "displayName": "vscode-mozaic",
   "description": "Language support for the Mozaic scripting language",
@@ -6,20 +9,32 @@
   "engines": {
     "vscode": "^1.109.0"
   },
+  "scripts": {
+    "package": "vsce package"
+  },
   "categories": [
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "mozaic",
-      "aliases": ["Mozaic", "mozaic"],
-      "extensions": [".mozaic"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "mozaic",
-      "scopeName": "source.mozaic",
-      "path": "./syntaxes/mozaic.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "mozaic",
+        "aliases": [
+          "Mozaic",
+          "mozaic"
+        ],
+        "extensions": [
+          ".mozaic"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mozaic",
+        "scopeName": "source.mozaic",
+        "path": "./syntaxes/mozaic.tmLanguage.json"
+      }
+    ]
   }
 }
