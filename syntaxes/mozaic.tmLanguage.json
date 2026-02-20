@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Mozaic",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.mozaic",
+          "match": "\\b(if|endif|while|for|endif)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.mozaic",
+      "begin": "{",
+      "end": "}"
+    }
+  },
+  "scopeName": "source.mozaic"
+}
